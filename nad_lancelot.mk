@@ -15,7 +15,7 @@
 #
 
 # Inherit from merlin device makefile
-$(call inherit-product, device/xiaomi/lava/device.mk)
+$(call inherit-product, device/xiaomi/lancelot/device.mk)
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -23,18 +23,18 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := lava
-PRODUCT_NAME := lineage_lava
+PRODUCT_DEVICE := lancelot
+PRODUCT_NAME := nad_lancelot
 PRODUCT_BRAND := Redmi
 PRODUCT_MANUFACTURER := xiaomi
 PRODUCT_MODEL := MT6768 
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_VENDOR := xiaomi
-TARGET_VENDOR_PRODUCT_NAME := lava
+TARGET_VENDOR_PRODUCT_NAME := lancelot
 PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="lancelot-user 10 QP1A.190711.020 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
