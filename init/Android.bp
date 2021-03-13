@@ -14,7 +14,7 @@
 // limitations under the License.
 //
 cc_library_static {
-    name: "libinit_lava",
+    name: "libinit_lancelot",
     srcs: ["init_lava.cpp"],
     recovery_available: true,
     include_dirs: [
