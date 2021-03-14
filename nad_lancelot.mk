@@ -37,5 +37,12 @@ TARGET_VENDOR := xiaomi
 TARGET_VENDOR_PRODUCT_NAME := lancelot
 PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="lancelot-user 10 QP1A.190711.020 release-keys"
 
+# Gapps
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_GAPPS_ARCH := arm64
+IS_PHONE := true 
+USE_GAPPS := true
+
+
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
 BUILD_FINGERPRINT := Redmi/lancelot_in/lancelot:10/QP1A.190711.020/V12.0.1.0.QJCINXM:user/release-keys
