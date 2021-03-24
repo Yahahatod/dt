@@ -1,24 +1,24 @@
 #!/bin/bash
 
-# mt6768 autopatcher by ToxicLord 202103040948 GMT+0
+# mt6768 autopatcher by ToxicLord 202103040948 GMT+7
 
 ROOTDIR=$(realpath .)
 
 pfwb() {
 
-    cd frameworks/base && wget https://github.com/PixelExperience/frameworks_base/commit/37f5a323245b0fd6269752742a2eb7aa3cae24a7.patch && git apply 37f5a323245b0fd6269752742a2eb7aa3cae24a7.patch
+    cd frameworks/base && wget https://github.com/PixysOS/frameworks_base/commit/43c906643ca30e1d433c9f1a5f292a0eeee30267.patch && git apply 43c906643ca30e1d433c9f1a5f292a0eeee30267.patch
 
 }
 
 pims() {
 
-    cd frameworks/opt/net/ims && wget https://github.com/PixelExperience/frameworks_opt_net_ims/commit/661ae9749b5ea7959aa913f2264dc5e170c63a0a.patch && git apply 661ae9749b5ea7959aa913f2264dc5e170c63a0a.patch
+    cd frameworks/opt/net/ims && wget https://github.com/PixysOS/frameworks_opt_net_ims/commit/30c271beb9974d59b43d76d618c5ec8249e2004b.patch && git apply 30c271beb9974d59b43d76d618c5ec8249e2004b.patch
 
 }
 
 pwifi() {
 
-    cd frameworks/opt/net/wifi && wget https://github.com/PixelExperience/frameworks_opt_net_wifi/commit/3bd2c14fbda9c079a4dc39ff4601ba54da589609.patch && git apply 3bd2c14fbda9c079a4dc39ff4601ba54da589609.patch
+    cd frameworks/opt/net/wifi && wget https://github.com/PixysOS/frameworks_opt_net_wifi/commit/187a233b64296083c5c8e7031bc730e0ab00beac.patch && git apply 187a233b64296083c5c8e7031bc730e0ab00beac.patch
 
 }
 
