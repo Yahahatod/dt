@@ -22,18 +22,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
+# Dalvik
+$(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
+
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/xiaomi/lava/lava-vendor.mk)
 
-# IMS
-$(call inherit-product, vendor/mediatek/ims/mtk-ims.mk)
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/audio_policy_configuration.xml
-
-# Bluetooth
-PRODUCT_PACKAGES += \
-    libldacBT_dec
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
@@ -41,18 +37,9 @@ PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(DEVICE_PATH)/overlay
-    
-# Permissions
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/permissions/id.xyz_gapps_permissions.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/id.xyz_gapps_permissions.xml \
-    $(LOCAL_PATH)/configs/permissions/id.xyz_gapps_permissions.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/id.xyz_gapps_permissions.xml \
-    $(LOCAL_PATH)/configs/permissions/id.xyz_gapps_permissions.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/id.xyz_gapps_permissions.xml \
-    $(LOCAL_PATH)/configs/permissions/id.xyz_android_permissions.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/id.xyz_android_permissions.xml \
-    $(LOCAL_PATH)/configs/permissions/id.xyz_android_permissions.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/id.xyz_android_permissions.xml \
-    $(LOCAL_PATH)/configs/permissions/id.xyz_android_permissions.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/id.xyz_android_permissions.xml
 
 # Dynamic Partitions 
-PRODUCT_EXTRA_VNDK_VERSIONS := 29
+PRODUCT_TARGET_VNDK_VERSION := 29
 PRODUCT_SHIPPING_API_LEVEL := 29
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -60,11 +47,12 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.mt6768.rc \
+    init.safailnet.rc \
     fstab.mt6768
 
 # DT2W
 PRODUCT_PACKAGES += \
-    DT2W-Service-Lava
+    DT2W-Service-Lava 
 
 # Fstab
 PRODUCT_COPY_FILES += \
@@ -78,11 +66,7 @@ PRODUCT_COPY_FILES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0_system \
-    android.hidl.manager@1.0_system \
-    libhidltransport \
-    libhidltransport.vendor \
-    libhwbinder \
-    libhwbinder.vendor    
+    android.hidl.manager@1.0_system
 
 # fastbootd
 PRODUCT_PACKAGES += \
@@ -90,7 +74,7 @@ PRODUCT_PACKAGES += \
  
 # Light
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.lava
+    android.hardware.light@2.0-service.lava 
   
 # NFC stack (AOSP)
 PRODUCT_PACKAGES += \
@@ -101,19 +85,9 @@ PRODUCT_PACKAGES += \
     libsuspend \
     android.hardware.health@2.0
 
-# RcsService
-PRODUCT_PACKAGES += \
-    RcsService
-    
-# WiFi
-PRODUCT_PACKAGES += \
-    WifiOverlay \
-    TetheringConfigOverlay
-
-# ImsInit hack
-PRODUCT_PACKAGES += \
+# IMS
+PRODUCT_BOOT_JARS += \
     ImsInit
 
-# Vendor overlay
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor-overlay/,$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION))
+    $(DEVICE_PATH)/configs/permissions/privapp-permissions-mediatek.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-mediatek.xml
